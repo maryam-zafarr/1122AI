@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import avatar from '../assets/avatar.svg';
 
 const Container = styled.div`
-    margin-left: 40px;
+    margin-left: 60px;
     margin-top: 40px;
     padding: 10px 20px;
 `

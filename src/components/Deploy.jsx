@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: absolute;
-  width: 31%;
-  height: 72%;
-  margin-left: 82px;
-  top: 170px;
+  width: 30%;
+  height: 47%;
+  margin-left: 69%;
+  top: 52%;
   border: 1px solid #C7C2C2;
   box-sizing: border-box;
   border-radius: 6px;
@@ -18,12 +18,12 @@ const Heading = styled.h1`
   margin-top: 15px;
 `
 
-const Transcript = () => {
+const Deploy = () => {
   return (
     <Container>
-      <Heading>Transcript</Heading>
+      <Heading>Dispatch Help</Heading>
     </Container>
   )
 };
 
-export default Transcript;
+export default Deploy;

@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `
 const Heading = styled.h1`
     display: flex;
-    margin-left: 40px;
+    margin-left: 60px;
     width: 60%;
     font-size: 20px;
     font-weight: 300;
