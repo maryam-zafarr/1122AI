@@ -4,6 +4,8 @@ import recording from '../assets/recording.svg';
 import mute from "../assets/mute.svg";
 import pause from "../assets/pause.svg";
 import phone from "../assets/phone.svg";
+import { PlayArrowOutlined } from '@material-ui/icons';
+import { CropSquareOutlined } from '@material-ui/icons';
 
 
 const Container = styled.div`
@@ -49,6 +51,7 @@ const MuteIconContainer = styled.div`
         background-color: #e0d9d9
     }
 `
+
 const MuteIcon = styled.img`
     padding: 0 .5vw 0 .5vw;
     height: 70%;
@@ -62,6 +65,7 @@ const PauseIcon = styled.img`
     &:hover {
         background-color: #e0d9d9
     }
+    border-right: 1px solid #DFDFDF;
 `
 const PhoneIcon = styled.img`
     border-left: 1px solid #DFDFDF;
@@ -93,20 +97,22 @@ const Text = styled.h1`
     margin:0;
 `
 
-const Dialheader = () => {
+const Dialheader = (props) => {
   return (
     <Container>
         <Wrapper>
            <Heading>
-               <b>Ongoing Call</b>&nbsp;| Case # AES90 | 0333-7863345
+               <b>Ongoing Call</b>&nbsp;| Case # {props.caseNumber} | {props.phoneNumber}
            </Heading>
             <IconContainer>
                 <CallActions>
                     <MuteIconContainer>
-                        <MuteIcon src={mute} />
+                        <PlayArrowOutlined/>
                     </MuteIconContainer>
                     <PauseIcon src={pause} />
-                    <PhoneIcon src={phone} />
+                    <MuteIconContainer>
+                        <CropSquareOutlined/>
+                    </MuteIconContainer>
                 </CallActions>
                 <RecordingTime>
                     <RecIcon src={recording} />

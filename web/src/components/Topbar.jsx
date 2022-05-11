@@ -1,5 +1,6 @@
 import { AssessmentOutlined, CallRounded, HomeOutlined, SettingsOutlined } from '@material-ui/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container =styled.div`
@@ -30,9 +31,11 @@ const Topbar = () => {
   return (
     <Container>
         <Top>
+            <Link to={`/`}>
             <Icon>
                 <HomeOutlined style={{paddingBottom: 20}}/>
             </Icon>
+            </Link>
             <Icon>
                 <AssessmentOutlined style={{paddingBottom: 20}}/>
             </Icon>
