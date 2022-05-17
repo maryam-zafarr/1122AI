@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logs from '../components/Logs';
+import Map from '../components/Map/Map';
 import Navbar from '../components/Navbar'
 import SearchBar from '../components/SearchBar';
 import Topbar from '../components/Topbar';
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
 `
 const Left = styled.div`
-    
+
 `
 const Text = styled.h2`
     margin-top: 10px;
@@ -24,8 +25,8 @@ const Text = styled.h2`
 `
 const Right = styled.div`
     background-color: grey;
-    width: 700px;
-    height: 91.8vh;
+    width: 800px;
+    height: 100vh;
 `
 const Home = () => {
   return (
@@ -40,7 +41,9 @@ const Home = () => {
           <SearchBar/>
           <Logs/>
       </Left>
-      <Right>Map here (to be added)</Right>
+      <Right>
+        <Map/>
+      </Right>
       </Wrapper>
     </Container>
   )

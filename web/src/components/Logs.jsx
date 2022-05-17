@@ -7,6 +7,7 @@ import axios from "axios";
 const Container = styled.div`
     display: flex;
     flex-direction: column ;
+    margin-right: 20px;
 `
 
 const Logs = () => {

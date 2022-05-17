@@ -36,7 +36,7 @@ const Entry = styled.div`
     align-items: center;
 `
 const EntryDiv = styled.div`
-    
+
 `
 const CallStatus = styled.div`
     width: 70px;
@@ -63,7 +63,7 @@ const Heading1 = styled.h1`
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
-` 
+`
 const Heading2 = styled.h2`
     display: inline-block;
     color: #333333;
@@ -74,13 +74,13 @@ const Heading2 = styled.h2`
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
-` 
+`
 const Accept = styled.button`
     border: none;
-    border-radius: 8px;
-    height: 75%;
-    margin-right: 3px;
-    width: 65px;
+    border-radius: 15px;
+    height: 35px;
+    margin-left: 15px;
+    width: 80px;
     background-color: ${props => props.type === 'High' ? '#DE3C3C' : '#689FF2'};
     border: 'none';
     color: white ;
