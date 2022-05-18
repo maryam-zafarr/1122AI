@@ -23,13 +23,13 @@ const Logs = () => {
       } catch (err) {}
     };
     getCases();
-  });
+  },[]);
 
 
   return (
     <Container>
         {cases.map(item => (
-            <Log key={item.id} item={item} />
+            <Log key={item._id} item={item} />
         ))}
     </Container>
   )

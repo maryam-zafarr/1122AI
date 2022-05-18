@@ -30,21 +30,8 @@ const OngoingCall = () => {
         setCaseDetail(res.data);
       } catch (err) {}
     };
-
-
-
     getCaseDetail();
-
-
-
-  });
-
-  var newArray = data.filter(function (el)
-  {
-    return el.type === caseDetail.typeOfEmergency ;
-  });
-
-
+  },[]);
 
   return (
 
@@ -71,16 +58,16 @@ const OngoingCall = () => {
       />
 
       <UserLocation
-      long = {caseDetail.long}
-      lat = {caseDetail.lat}
-      id = {caseDetail._id}
-      typeOfEmergency = {caseDetail.typeOfEmergency}
-      priority = {caseDetail.priority}
-      location={caseDetail.location}
+        long = {caseDetail.long}
+        lat = {caseDetail.lat}
+        id = {caseDetail._id}
+        typeOfEmergency = {caseDetail.typeOfEmergency}
+        priority = {caseDetail.priority}
+        location={caseDetail.location}
       />
 
       <Deploy
-        typeOfEmergency = {caseDetail.typeOfEmergency}
+        case = {caseDetail}
         unit = {data}
       />
 

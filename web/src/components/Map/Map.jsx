@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactMapboxGl from 'react-mapbox-gl';
 import { Marker } from 'react-mapbox-gl';
-import { Layer, Feature } from 'react-mapbox-gl';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import CustomMarker from './CustomMarker';
@@ -29,7 +28,7 @@ const Map = ({item}) => {
       } catch (err) {}
     };
     getCases();
-  });
+  },[]);
 
   const onMapLoad = (map) => {
     window.map = map;
@@ -71,10 +70,11 @@ const Map = ({item}) => {
         cases.map(item => (
           <Marker
             item={item}
-            key={item.id}
-            coordinates={[item.long,item.lat]}
+            key={item._id}
+            coordinates={[parseFloat(item.long),parseFloat(item.lat)]}
             offset={[400, -window.innerHeight * .915]}
           >
+
             <CustomMarker
               id={item._id}
               status={item.typeOfEmergency}

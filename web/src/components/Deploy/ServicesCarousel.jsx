@@ -6,21 +6,25 @@ const ServicesCarousel = (props) => {
   const ref = useRef();
   const [fixedCount, setFixedCount] = useState(0);
   let index = 0;
+  const [disabled, setDisabled] = useState(false);
 
- /* useEffect(() => {
-    let count = 0;
-    for (let i = 0; i < props.unit.length; i++) {
-      if ((props.unit[i].type.toLowerCase()).startsWith(props.typeOfEmergency.toLowerCase()) || (props.unit[i].name.toLowerCase()).startsWith(props.typeOfEmergency.toLowerCase())) {
-        count += 1;
+  function handleClick()  {
+
+    var msg = 'Emergency Type: '+ props.case.typeOfEmergency + '\nTime of Incident: ' + props.case.time + '\nLocation: ' + props.case.location + '\nCoordinates: ' + props.case.long + ' , ' + props.case.lat + '\nContact Number: ' + props.case.phoneNumber;
+    fetch('http://localhost:5000/api/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({to:'whatsapp:+923365184489', body: msg})
+    })
+      .then(res => res.json())
+
+      if (disabled === true) {
+        return;
       }
-    }
-    if (ref && ref.current) {
-      if (count >= 1) {
-        ref.current.goTo(0 , true);
-      }
-    }
-    setFixedCount(count);
-  }, [props.unit, props.typeOfEmergency]); */
+      setDisabled(true);
+  }
 
   const settings = {
     arrows: true,
@@ -38,7 +42,7 @@ const ServicesCarousel = (props) => {
         {props.unit.map((info) => {
             index += 1;
             return (
-              <div className="help-carousel">
+              <div className="help-carousel" key={info.id}>
                 <div className="carousel-body">
                   <img src={info.unitImg} alt="unit-image" className="unit-image" />
                   <div className="description">
@@ -46,7 +50,7 @@ const ServicesCarousel = (props) => {
                     <h2 className="address">{info.address}</h2>
                     <div className="carousel-buttons">
                       <Button className="skip">Skip</Button>
-                      <Button>Request</Button>
+                      <Button onClick={() => handleClick()} disabled={disabled}>{disabled ? 'Requested' : 'Request'}</Button>
                     </div>
                   </div>
                 </div>

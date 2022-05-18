@@ -1,4 +1,3 @@
-import { AccountCircle } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 import avatar from '../assets/avatar.svg';
@@ -10,7 +9,7 @@ const Container = styled.div`
 `
 const Wrapper = styled.div`
     display: flex;
-    
+
 `
 const Picture = styled.img`
     height: 50px;

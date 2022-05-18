@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import eye from '../../assets/eye.svg'
 import './marker.scss';

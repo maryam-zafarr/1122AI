@@ -26,7 +26,7 @@ const Deploy = (props) => {
   return (
     <Container>
       <Heading>Dispatch Help</Heading>
-      <ServicesCarousel unit={props.unit} typeOfEmergency={props.typeOfEmergency}/>
+      <ServicesCarousel unit={props.unit} case={props.case}/>
     </Container>
   )
 };
