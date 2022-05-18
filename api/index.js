@@ -7,12 +7,13 @@ const cors = require("cors");
 //routes
 const userRoute = require("./routes/user");
 const caseRoute = require("./routes/case");
+const serviceRoute = require("./routes/service");
 
 dotenv.config();
 
 mongoose
     .connect(process.env.MONGO_URL)
-    .then(() => 
+    .then(() =>
         console.log("DB Connection is successful")
     )
     .catch((err) => {
@@ -23,6 +24,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/cases", caseRoute);
+app.use("/api/services", serviceRoute);
 
 app.listen(5000, () => {
     console.log("Backend server is running!");

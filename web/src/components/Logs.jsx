@@ -29,7 +29,7 @@ const Logs = () => {
   return (
     <Container>
         {cases.map(item => (
-            <Log item={item} key={item.id} />
+            <Log key={item.id} item={item} />
         ))}
     </Container>
   )

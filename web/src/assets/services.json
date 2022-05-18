@@ -1,0 +1,37 @@
+ [
+    {
+      "id": 1,
+      "type": "Fire",
+      "name": "Universal Fire Protection Co Pvt",
+      "unitImg": "https://universalfireprotection.com.pk/wp-content/uploads/2018/02/fav-1.png",
+      "address": "North Star Plaza, Murree Rd"
+    },
+    {
+      "id":2,
+      "type": "Fire",
+      "name": "Bahria Fire Station",
+      "unitImg": "http://www.zameen.com/blog/wp-content/uploads/2015/03/bahria-town.jpg",
+      "address": "Bahria Bridge, Bahria Town Phase II"
+    },
+    {
+      "id":3,
+      "type": "Ambulance",
+      "name": "Edhi Emergency(Post 2)",
+      "unitImg": "https://startuppakistan.com.pk/wp-content/uploads/2021/09/icon-description-automatically-generated.jpeg",
+      "address": "Peshawar Rd, Westridge 1, Rawalpindi"
+    },
+    {
+      "id":4,
+      "type": "Police",
+      "name": "City Police Station",
+      "unitImg": "//upload.wikimedia.org/wikipedia/en/thumb/8/8c/Punjab_Police_logo_with_titles.png/140px-Punjab_Police_logo_with_titles.png",
+      "address": "District Ct Rd, Police Lines, Rawalpindi"
+    },
+    {
+      "id":5,
+      "type": "Rescue 1122",
+      "name": "Rescue 1122 (44 Station)",
+      "unitImg": "//upload.wikimedia.org/wikipedia/en/e/ea/Rescue1122.jpg",
+      "address": "Bahria Town Phase III Rawalpindi"
+    }
+  ]

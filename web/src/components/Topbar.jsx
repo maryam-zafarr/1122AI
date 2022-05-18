@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container =styled.div`
-    position: fixed;     
+    position: fixed;
     height: 100%;
-    width: 50px;     
-    z-index: 1;     
+    width: 50px;
+    z-index: 1;
     top: 3.2em;
-    overflow-x: hidden;  
-    padding-top: 10px;
+    overflow-x: hidden;
+    padding-top: 26px;
     border-right: 1px solid #f1ecec;
     display: flex;
     flex-direction: column;
@@ -33,14 +33,14 @@ const Topbar = () => {
         <Top>
             <Link to={`/`}>
             <Icon>
-                <HomeOutlined style={{paddingBottom: 20}}/>
+                <HomeOutlined style={{paddingBottom: 20, fontSize: '40px'}}/>
             </Icon>
             </Link>
             <Icon>
-                <AssessmentOutlined style={{paddingBottom: 20}}/>
+                <AssessmentOutlined style={{paddingBottom: 20 , fontSize: '40px'}}/>
             </Icon>
             <Icon>
-                <CallRounded style={{paddingBottom: 20}}/>
+                <CallRounded style={{paddingBottom: 20, fontSize:'40px'}}/>
             </Icon>
         </Top>
         <Bottom>
@@ -50,7 +50,7 @@ const Topbar = () => {
         </Bottom>
     </Container>
   )
-  
+
 };
 
 export default Topbar;

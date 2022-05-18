@@ -33,7 +33,7 @@ const CustomMarker = (props) => {
                 backgroundColor: color
               }}
             />
-            <h1>#{props.id.substr(0, 8).toUpperCase()}</h1>
+            <h1>{props.location}</h1>
           </div>
           <div className="line">
             <img src={eye} />
