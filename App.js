@@ -7,7 +7,7 @@ import  AppLoading from "expo-app-loading";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeIcon, ChatIcon, MapIcon } from './src/images/svg-icons';
+import { HomeIcon, ChatIcon, MapIcon, UserIcon } from './src/images/svg-icons';
 import {
   useFonts,
   IBMPlexSans_100Thin,
@@ -29,8 +29,25 @@ import {
 import Home from './src/screens/home';
 import Chat from './src/screens/chat';
 import Map from './src/screens/map2';
+import SplashScreen from './src/screens/spalshScreen';
+import UserInfo from './src/screens/UserInfo';
 // import Map2 from './src/screens/map';
-
+const fonts = {
+  IBMPlexSans_100Thin,
+  IBMPlexSans_100Thin_Italic,
+  IBMPlexSans_200ExtraLight,
+  IBMPlexSans_200ExtraLight_Italic,
+  IBMPlexSans_300Light,
+  IBMPlexSans_300Light_Italic,
+  IBMPlexSans_400Regular,
+  IBMPlexSans_400Regular_Italic,
+  IBMPlexSans_500Medium,
+  IBMPlexSans_500Medium_Italic,
+  IBMPlexSans_600SemiBold,
+  IBMPlexSans_600SemiBold_Italic,
+  IBMPlexSans_700Bold,
+  IBMPlexSans_700Bold_Italic,
+};
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const TabLayout = () => (
@@ -45,6 +62,13 @@ const TabLayout = () => (
         paddingTop: 5
       },
     }}>
+    <Tab.Screen
+      name='User Information'
+      component={UserInfo}
+      options={{
+        tabBarIcon: ({color}) => (<UserIcon fill={color}/>)
+      }}
+    />
     <Tab.Screen
       name='Home'
       component={Home}
@@ -80,22 +104,7 @@ const MapStackLayout = () => (
   </Stack.Navigator>
 );
 
-const fonts = {
-  IBMPlexSans_100Thin,
-  IBMPlexSans_100Thin_Italic,
-  IBMPlexSans_200ExtraLight,
-  IBMPlexSans_200ExtraLight_Italic,
-  IBMPlexSans_300Light,
-  IBMPlexSans_300Light_Italic,
-  IBMPlexSans_400Regular,
-  IBMPlexSans_400Regular_Italic,
-  IBMPlexSans_500Medium,
-  IBMPlexSans_500Medium_Italic,
-  IBMPlexSans_600SemiBold,
-  IBMPlexSans_600SemiBold_Italic,
-  IBMPlexSans_700Bold,
-  IBMPlexSans_700Bold_Italic,
-};
+
 export default function App() {
   let [fontsLoaded] = useFonts(fonts);
 
@@ -104,7 +113,14 @@ export default function App() {
   }else {
     return (
       <NavigationContainer>
-        <TabLayout/>
+
+        <TabLayout />
+        {/* <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="tabs" component={TabLayout}></Stack.Screen>
+          <Stack.Screen name="SplashScreen" component={SplashScreen}></Stack.Screen>
+          
+        </Stack.Navigator> */}
+        
       </NavigationContainer>
     );
   }

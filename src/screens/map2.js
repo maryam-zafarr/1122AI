@@ -6,9 +6,6 @@ import { Marker } from "react-native-maps";
 import Constants from "expo-constants";
 import { useEffect } from 'react/cjs/react.production.min';
 // import { GOOGLE_API_KEY } from '@env';
-// import { WebView } from 'react-native-webview';
-// import { HERE_APIKEY } from '@env';
-// import Geolocation from '@react-native-community/geolocation';
 
 
 const styles = StyleSheet.create({
@@ -70,6 +67,19 @@ class Map extends React.Component {
           longitudeDelta: 0.0421,
         },
       });
+      let databody = {
+        latitude: this.state.mapRegion.latitude,
+        longitude: this.state.mapRegion.longitude,
+      }
+      fetch('http://192.168.10.3:3001/send', {
+        method: 'POST',
+        body: JSON.stringify(databody),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(res => res.json())
+    .then(data => console.log(data)); 
     } else {
       alert("Location permission not granted");
     }

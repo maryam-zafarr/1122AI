@@ -96,10 +96,8 @@ const styles = StyleSheet.create({
 const serverUrl ='https://1122-ai-agile-mandrill-rh.au-syd.mybluemix.net';
 
 const Message = (props) => {
-  
   const style = props.fromInput ? styles.myText : styles.waText;
 
-  // console.log(props.text);
   return (
     <View style={styles.messageContainer}>
       <Text style={style}>{props.text}</Text>
@@ -112,6 +110,8 @@ const Chat = function ({ navigation }) {
   const [session, setSession] = React.useState('');
   const [messages, setMessages] = React.useState([]);
 
+
+  // const sessionRef = useRef();
   const getSession = () => {
     return fetch(`${serverUrl}/api/session`)
       .then(response => {
@@ -186,7 +186,7 @@ const Chat = function ({ navigation }) {
         fromInput: fromInput
       };
     });
-    // console.log(result);
+
     setMessages(msgs => [
       ...msgs,
       ...result
@@ -198,7 +198,27 @@ const Chat = function ({ navigation }) {
       getSession();
     })
   }, []);
+  let databody = {
+    phoneNumber: '0334-5674422',
+    transcript: "There's a gas leak. It smells a lot!",
+    description: "Gas. Smoke. Smell",
+    priority: "Medium",
+    livesAtRisk: "3",
+    status: "Ongoing",
+    time: "12:10PM",
+    latitude: 33.687563439131296,
+    longitude: 73.09160116434741,
+    _id: `anonymous_IBMuid-${session}`
+  }
+  fetch('http://192.168.10.5:3001/session', {
+    method: 'POST',
+    body: JSON.stringify(databody),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  }).then(res => res.json());
   return (
+    
     <ScrollView>
     <View style={styles.outerContainer}>
       {/* <KeyboardAvoidingView
@@ -210,7 +230,7 @@ const Chat = function ({ navigation }) {
         })} > */}
         
         <ScrollView contentContainerStyle={styles.scrollContainer}>
-          {messages.map((message, i) => {
+        {messages.map((message, i) => {
             message.key = `${(new Date()).getTime()}-${i}`;
             return <Message {...message} />
           })}

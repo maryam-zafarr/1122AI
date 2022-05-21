@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Home = () => (
+const Home = ({navigation}) => (
   <View style={styles.center}>
     <ScrollView style={styles.scroll}>
       <Image
@@ -73,14 +73,7 @@ const Home = () => (
       <Text style={styles.content}>
         Stuck in an Emergency? Get help right away!
       </Text>
-      <View style={styles.buttonGroup}>
-        <TouchableOpacity onPress={() => Linking.openURL('https://developer.ibm.com/callforcode')}>
-          <Text style={styles.button}>Learn more</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL('https://github.com/Call-for-Code/Solution-Starter-Kit-Disasters-2020')}>
-          <Text style={styles.button}>Get the code</Text>
-        </TouchableOpacity>
-      </View>
+     
     </ScrollView>
   </View>
 );
