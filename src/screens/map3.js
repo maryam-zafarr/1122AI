@@ -72,7 +72,7 @@ class Map extends React.Component {
         latitude: this.state.mapRegion.latitude,
         longitude: this.state.mapRegion.longitude,
       }
-      fetch('http://192.168.10.3:3001/send', {
+      fetch('http://10.7.150.41:3001/send', {
         method: 'POST',
         body: JSON.stringify(databody),
         headers: {

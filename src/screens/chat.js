@@ -1,9 +1,8 @@
 import React from 'react';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { StyleSheet, KeyboardAvoidingView, ScrollView, View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
 // import Config from 'react-native-config';
-import io from "socket.io-client";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const styles = StyleSheet.create({
   outerContainer: {
     width: '100%',
@@ -52,7 +51,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 14,
-    borderRadius:10
+    borderRadius: 10,
+    justifyContent: 'flex-end',
+    flex:1,
   },
   textInput: {
     fontFamily: 'IBMPlexSans_500Medium',
@@ -61,17 +62,17 @@ const styles = StyleSheet.create({
     padding: 16,
     elevation: 0,
     paddingRight: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
-  submitButton: {
-    fontFamily: 'IBMPlexSans_500Medium',
-    position: 'absolute',
-    right: 24,
-    bottom: 47,
-    width: 80,
-    height: 100,
-    top:25,
-  },
+  // submitButton: {
+  //   fontFamily: 'IBMPlexSans_500Medium',
+  //   position: 'absolute',
+  //   right: 24,
+  //   bottom: 47,
+  //   width: 80,
+  //   height: 100,
+  //   top:25,
+  // },
   button: {
     backgroundColor: '#FF5555',
     borderRadius: 5,
@@ -105,13 +106,11 @@ const Message = (props) => {
   );
 };
 
-const Chat = function ({ navigation }) {
+const Chat = function ({route, navigation }) {
   const [input, setInput] = React.useState('');
   const [session, setSession] = React.useState('');
   const [messages, setMessages] = React.useState([]);
 
-
-  // const sessionRef = useRef();
   const getSession = () => {
     return fetch(`${serverUrl}/api/session`)
       .then(response => {
@@ -199,18 +198,20 @@ const Chat = function ({ navigation }) {
     })
   }, []);
   let databody = {
-    phoneNumber: '0334-5674422',
-    transcript: "There's a gas leak. It smells a lot!",
-    description: "Gas. Smoke. Smell",
-    priority: "Medium",
-    livesAtRisk: "3",
+    // phoneNumber: '0334-5674422',
+    phoneNumber: '0338-5203311',
+    name:"Bushra Muqaddas",
+    transcript: "Oh my god please help",
+    typeOfEmergency:"Fire",
+    description: "Fire. smoke",
+    livesAtRisk: "2",
     status: "Ongoing",
-    time: "12:10PM",
-    latitude: 33.687563439131296,
-    longitude: 73.09160116434741,
+    time: "11:35 PM",
+    latitude: 33.6428116,
+    longitude: 72.9904141,
     _id: `anonymous_IBMuid-${session}`
   }
-  fetch('http://192.168.10.5:3001/session', {
+  fetch('http://10.7.150.41:3001/session', {
     method: 'POST',
     body: JSON.stringify(databody),
     headers: {
@@ -219,7 +220,7 @@ const Chat = function ({ navigation }) {
   }).then(res => res.json());
   return (
     
-    <ScrollView>
+    <ScrollView style={{backgroundColor:'white'}}>
     <View style={styles.outerContainer}>
       {/* <KeyboardAvoidingView
         style={styles.innerContainer}
@@ -249,7 +250,7 @@ const Chat = function ({ navigation }) {
           <View style={styles.submitButton}>
             {/* {input !== '' && <Button style={styles.button} title='Send' onPress={sendMessage} />} */}
             {input !== '' && <TouchableOpacity style={styles.button} onPress={sendMessage}>
-              <Text style={styles.textStyle}>SEND</Text></TouchableOpacity>}
+              <Text style={styles.textStyle}></Text></TouchableOpacity>}
           </View>
         </View>
       {/* </KeyboardAvoidingView> */}

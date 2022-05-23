@@ -1,14 +1,17 @@
-import React from 'react'
+// import React from 'react'
+// import { useState } from 'react';
 
-const [usernames, setUserName] = useState('');
-const [phone, setPhone] = useState('');
-const Context = React.createContext({usernames, setUserName,phone, setPhone });
+// // const NameContext = React.createContext({ userName, setUserName });
+// // const PhoneContext = React.createContext({ phone, setPhone });
+// const Context = React.createContext();
 
-const Provider = ({ children }) => {
-    return (
-        <Context.Provider>
-            {children}
-        </Context.Provider>
-    )
-};
-export { Context, Provider };
+// const Provider = ({ children }) => {
+//     const [userName, setUserName] = useState('');
+// const [phone, setPhone] = useState('');
+//     return (
+//         <Context.Provider value={{ name: [userName, setUserName], phoneNumber: [phone, setPhone] }}>
+//             {children}
+//         </Context.Provider>
+//     )
+// };
+// export { Context, Provider };

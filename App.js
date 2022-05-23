@@ -7,6 +7,7 @@ import  AppLoading from "expo-app-loading";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeIcon, ChatIcon, MapIcon, UserIcon } from './src/images/svg-icons';
 import {
   useFonts,
@@ -29,8 +30,8 @@ import {
 import Home from './src/screens/home';
 import Chat from './src/screens/chat';
 import Map from './src/screens/map2';
-import SplashScreen from './src/screens/spalshScreen';
 import UserInfo from './src/screens/UserInfo';
+// import { Provider } from './Context';
 // import Map2 from './src/screens/map';
 const fonts = {
   IBMPlexSans_100Thin,
@@ -53,7 +54,7 @@ const Tab = createBottomTabNavigator();
 const TabLayout = () => (
   <Tab.Navigator
     style={{paddingTop: 50}}
-    initialRouteName='Home'
+    initialRouteName='UserInfo'
     screenOptions={{
       tabBarActiveTintColor: '#FF5555',
       tabBarInactiveTintColor: '#000',
@@ -61,6 +62,7 @@ const TabLayout = () => (
         backgroundColor: '#F1F0EE',
         paddingTop: 5
       },
+      tabBarHideOnKeyboard: true,
     }}>
     <Tab.Screen
       name='User Information'
@@ -112,16 +114,18 @@ export default function App() {
     return <AppLoading />;
   }else {
     return (
-      <NavigationContainer>
+      
+        <NavigationContainer>
 
-        <TabLayout />
-        {/* <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="tabs" component={TabLayout}></Stack.Screen>
-          <Stack.Screen name="SplashScreen" component={SplashScreen}></Stack.Screen>
+          <TabLayout />
+          {/* <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="tabs" component={TabLayout}></Stack.Screen>
+            <Stack.Screen name="SplashScreen" component={SplashScreen}></Stack.Screen>
+            
+          </Stack.Navigator> */}
           
-        </Stack.Navigator> */}
+        </NavigationContainer>
         
-      </NavigationContainer>
     );
   }
 };

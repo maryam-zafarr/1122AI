@@ -42,7 +42,7 @@ app.get('/api/session', (req, res) => {
 app.post('/api/message', (req, res) => {
   const text = req.body.text || '';
   const sessionid = req.body.sessionid;
-
+  console.log(sessionid);
   assistant
     .message(text, sessionid)
     .then(result => res.json(result))

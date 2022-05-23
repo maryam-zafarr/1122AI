@@ -1,4 +1,4 @@
-import React, {useState, createRef} from 'react';
+import React, {useState, createRef, useContext} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -10,10 +10,17 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
+
+import Home from './home';
+import Chat from './chat';
+// import { Context } from '../../Context';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const UserInfo = () => {
+const UserInfo = ({navigation}) => {
     const [userName, setUserName] = useState('');
+  // const [name, phoneNumber] = useContext(Context);
+    // const [userName, setUserName] = name;
     const [phone, setPhone] = useState('');
+    // const [phone, setPhone] = phoneNumber;
     const [loading, setLoading] = useState(false);
     const [errortext, setErrortext] = useState('');
 
@@ -29,8 +36,8 @@ const UserInfo = () => {
           return;
         }
         setLoading(true);
-        let dataToSend = {name: username, phoneNumber: phone};
-        let formBody = [];
+        // let dataToSend = {name: userName, phoneNumber: phone};
+        // let formBody = [];
         // for (let key in dataToSend) {
         //   let encodedKey = encodeURIComponent(key);
         //   let encodedValue = encodeURIComponent(dataToSend[key]);
@@ -38,33 +45,41 @@ const UserInfo = () => {
         // }
         // formBody = formBody.join('&');
      
-        fetch('http://192.168.10.3:3001/user', {
-          method: 'POST',
-          body: formBody,
-          headers: {
-            //Header Defination
-            'Content-Type':
-            'application/json',
-          },
-        })
-          .then((response) => response.json())
-          .then((responseJson) => {
-            //Hide Loader
-            setLoading(false);
-            console.log(responseJson);
-            // If server response message same as Data Matched
-            if (responseJson.status === 'success') {
-              AsyncStorage.setItem('user_phone', responseJson.data.phoneNumber);
-            } else {
-              setErrortext(responseJson.msg);
-              console.log('Please check your name or phone number');
-            }
-          })
-          .catch((error) => {
-            //Hide Loader
-            setLoading(false);
-            console.error(error);
-          });
+        // fetch('http://192.168.10.3:3001/user', {
+        //   method: 'POST',
+        //   body: dataToSend,
+        //   headers: {
+        //     //Header Defination
+        //     'Content-Type':
+        //     'application/json',
+        //   },
+        // })
+        //   .then((response) => response.json())
+        //   .then((responseJson) => {
+        //     //Hide Loader
+        //     setLoading(false);
+        //     console.log(responseJson);
+        //     // If server response message same as Data Matched
+        //     if (responseJson.status === 'success') {
+        //       AsyncStorage.setItem('user_phone', responseJson.data.phoneNumber);
+        //     } else {
+        //       setErrortext(responseJson.msg);
+        //       console.log('Please check your name or phone number');
+        //     }
+        //   })
+        //   .catch((error) => {
+        //     //Hide Loader
+        //     setLoading(false);
+        //     console.error(error);
+        //   });
+      AsyncStorage.setItem('user_phone', phone);
+      AsyncStorage.setItem('user_name', userName);
+      navigation.navigate('Home',{
+        data: {
+          name: userName, 
+        userPhone: phone
+        }
+        });
       };
       return (
         <View style={styles.mainBody}>

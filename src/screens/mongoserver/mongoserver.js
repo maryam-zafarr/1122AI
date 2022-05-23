@@ -61,7 +61,7 @@ app.post('/session',async (req, res) => {
         });
     }
     else {
-        // console.log("Case is already registered");
+        console.log("Case is already registered");
         await db.collection('test').updateOne({ _id: req.body._id }, { $set: { phoneNumber: req.body.phoneNumber } } );
         
     }
